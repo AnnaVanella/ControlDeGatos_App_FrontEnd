@@ -15,7 +15,8 @@ class RecuperarContraScreen extends StatelessWidget {
             height: double.infinity,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/recuperarContra.jpg'),
+                image: AssetImage(
+                    'assets/recuperarContra.jpg'), // Cambiar la posicion de la imagen
                 fit: BoxFit.fill,
               ),
             ),
