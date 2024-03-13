@@ -1,9 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_hegga_controldegastos_frontend/widgets/custom_container.dart';
 import 'package:flutter_hegga_controldegastos_frontend/widgets/widgets.dart';
-import 'package:introduction_screen/introduction_screen.dart';
 
 class CrearCuentaIpScreen extends StatelessWidget {
   const CrearCuentaIpScreen({Key? key}) : super(key: key);
@@ -40,7 +36,6 @@ class CrearCuentaIpScreen extends StatelessWidget {
                   child: Column(
                     key: myFormKey,
                     children: const [
-                      Text('Informacion Personal'),
                       TextoLoginScreen(
                         texto:
                             '¡Bienvenido a tu gestor de gastos personalizado para tus vacaciones!',
@@ -54,6 +49,17 @@ class CrearCuentaIpScreen extends StatelessWidget {
                         leftPadding: 0.1,
                         rightPadding: 0.1,
                         topPadding: 0.32,
+                      ),
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                      Text(
+                        'Informacion Personal',
+                        style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xFFFFFFFF),
+                            fontFamily: 'Montserrat'),
                       ),
                       UserInput2Field(
                         icon: Icons.person_pin,

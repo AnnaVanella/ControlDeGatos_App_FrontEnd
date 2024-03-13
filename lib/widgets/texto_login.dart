@@ -12,12 +12,43 @@ class TextoLoginScreen extends StatelessWidget {
     return Text(
       texto,
       textAlign: TextAlign.center,
-      style: TextStyle(
+      style: const TextStyle(
         color: Color(0xFFFFC727),
         fontFamily: 'Montserrat',
         fontSize: 22,
         fontStyle: FontStyle.normal,
         fontWeight: FontWeight.w600,
+      ),
+    );
+  }
+}
+
+class TextoDes2Screen extends StatelessWidget {
+  final String texto;
+  final double leftPadding; // Nuevo parámetro para el padding izquierdo
+  final double rightPadding; // Nuevo parámetro para el padding derecho
+  final double topPadding; // Nuevo parámetro para el padding superior
+
+  const TextoDes2Screen({
+    Key? key,
+    required this.texto,
+    this.leftPadding = 0.06,
+    this.rightPadding = 0.06,
+    this.topPadding = 0.30,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    return Text(
+      texto,
+      textAlign: TextAlign.center,
+      style: const TextStyle(
+        fontFamily: 'Montserrat',
+        fontSize: 18,
+        fontStyle: FontStyle.normal,
+        fontWeight: FontWeight.w400,
+        color: Color(0xFFFFFFFF),
       ),
     );
   }
@@ -61,36 +92,7 @@ class TextoLoginScreen extends StatelessWidget {
 //   }
 // }
 
-class TextoDes2Screen extends StatelessWidget {
-  final String texto;
-  final double leftPadding; // Nuevo parámetro para el padding izquierdo
-  final double rightPadding; // Nuevo parámetro para el padding derecho
-  final double topPadding; // Nuevo parámetro para el padding superior
 
-  const TextoDes2Screen({
-    Key? key,
-    required this.texto,
-    this.leftPadding = 0.06,
-    this.rightPadding = 0.06,
-    this.topPadding = 0.30,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    return Text(
-      texto,
-      textAlign: TextAlign.center,
-      style: TextStyle(
-        fontFamily: 'Montserrat',
-        fontSize: 18,
-        fontStyle: FontStyle.normal,
-        fontWeight: FontWeight.w400,
-        color: Color(0xFFFFFFFF),
-      ),
-    );
-  }
-}
 
 // class Texto1crearScreen extends StatelessWidget {
 //   final String texto;
