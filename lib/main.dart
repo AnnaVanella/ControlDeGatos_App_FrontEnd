@@ -12,15 +12,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Control de Gastos',
         debugShowCheckedModeBanner: false,
-        initialRoute: "login",
+        initialRoute: "crear_cuenta",
         routes: {
           'home': (_) => const HomeScreen(),
-          'login': (_) => LoginScreen(),
+          // 'login': (_) => LoginScreen(),
           'recuperar_contra': (_) => RecuperarContraScreen(),
           'crear_cuenta': (_) => CrearCuentaScreen(),
+          'crear_cuenta_ip': (_) => CrearCuentaIpScreen(),
           'panorama': (_) => PanoramaScreen(),
           'GatosControlados': (_) => PanoramaScreen(),
           'fechas': (_) => FechasViajesScreen(),
+          'login2': (_) => Login2Screen(),
+          'onboarding2': (_) => Onboarding2Screen(),
+          'onboarding': (_) => OnboardingScreen()
         },
         theme: AppTheme.lightTheme);
   }

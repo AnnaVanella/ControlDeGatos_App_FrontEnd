@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hegga_controldegastos_frontend/widgets/widgets.dart';
 
-class RecuperarContraScreen extends StatelessWidget {
-  const RecuperarContraScreen({super.key});
+import '../widgets/widgets.dart';
+
+class Login2Screen extends StatelessWidget {
+  Login2Screen({Key? key});
 
   @override
   Widget build(BuildContext context) {
     final GlobalKey<FormState> myFormKey = GlobalKey<FormState>();
+
     return Scaffold(
       body: Stack(
         children: [
@@ -16,18 +18,19 @@ class RecuperarContraScreen extends StatelessWidget {
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(
-                    'assets/recuperarContra.jpg'), // Cambiar la posicion de la imagen
+                  'assets/login.jpg',
+                ),
                 fit: BoxFit.fill,
               ),
             ),
           ),
-
           // Rectángulo superpuesto
           Positioned.fill(
             child: Rectangulo(),
           ),
 
-          // Contenido centrado en el rectángulo
+          // Botón personalizado en la esquina superior derecha
+
           const Positioned(
               top: 220,
               left: 0,
@@ -42,15 +45,15 @@ class RecuperarContraScreen extends StatelessWidget {
             right: 30,
             child: TextoDes2Screen(
               texto:
-                  'Ingresa el correo electrónico con el que te registraste y recibirás un mensaje para restablecer tu contraseña.',
+                  'Recarga tus energías, desconéctate de la rutina y construye recuerdos inolvidables en tus vacaciones.',
             ),
           ),
 
           SingleChildScrollView(
             child: Container(
               child: Padding(
-                padding:
-                    EdgeInsets.only(top: 416, bottom: 150, right: 36, left: 36),
+                padding: const EdgeInsets.only(
+                    top: 400, bottom: 150, right: 36, left: 36),
                 child: Column(
                   key: myFormKey,
                   children: const [
@@ -60,43 +63,61 @@ class RecuperarContraScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 2),
                     CustomInputField(
-                      // labelText: 'Nombre',
                       hintText: 'Escribe tu correo electronico',
                       keyboardType: TextInputType.emailAddress,
-                      // formPropety: 'firts_name',
-                      // formValues: formValues
                     ),
-                    SizedBox(height: 40),
+                    SizedBox(height: 6),
                     UserInput2Field(
-                      icon: Icons.person_2_outlined,
-                      text: 'Usuario',
+                      icon: Icons.lock_clock_outlined,
+                      text: 'Contraseña',
                     ),
                     SizedBox(height: 2),
                     CustomInputField(
-                      // labelText: 'Nombre',
-                      hintText: 'Confirma tu correo electronico',
-                      keyboardType: TextInputType.emailAddress,
-                      // formPropety: 'firts_name',
-                      // formValues: formValues
+                      hintText: 'Ingresa tu contraseña',
+                      obscureText: true,
+                      suffixIcon: Icons.visibility,
                     ),
                     SizedBox(height: 30),
-                    // CustomButton(
-                    //    text: 'Ingresar',
-                    //      onPressed: () {
-                    //       Navigator.pushNamed(context, 'login2');
-                    //     }),
                   ],
                 ),
               ),
             ),
           ),
 
+          Positioned(
+            top: 100,
+            right: 20,
+            child: CustomTextButton(
+              icon: Icons.add,
+              iconSize: 18,
+              buttonText: 'Crear Usuario',
+              fontSize: 16,
+              onPressed: () {
+                Navigator.pushNamed(context, 'crear_cuenta');
+              },
+            ),
+          ),
+
+          // Botón personalizado en la esquina inferior derecha
+          Positioned(
+            bottom: 300,
+            right: 20,
+            child: CustomTextButton(
+              icon: Icons.lock_reset,
+              iconSize: 14,
+              buttonText: 'Recuperar contraseña',
+              fontSize: 12,
+              onPressed: () {
+                Navigator.pushNamed(context, 'recuperar_contra');
+              },
+            ),
+          ),
           CustomElevatedButton(
             buttonText: 'Ingresar',
             onPressed: () {
-              Navigator.pushNamed(context, 'login2');
+              Navigator.pushNamed(context, 'home');
             },
-            top: 820,
+            top: 720,
             right: 84,
           ),
         ],
