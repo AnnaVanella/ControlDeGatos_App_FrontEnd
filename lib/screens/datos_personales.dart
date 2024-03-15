@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hegga_controldegastos_frontend/widgets/widgets.dart';
 
-class CambiarContraScreen extends StatelessWidget {
-  const CambiarContraScreen({Key? key}) : super(key: key);
+class DatosPersonalesScreen extends StatelessWidget {
+  const DatosPersonalesScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,7 @@ class CambiarContraScreen extends StatelessWidget {
                           ),
                           SizedBox(width: 10),
                           Text(
-                            'Contraseña',
+                            'Datos personales',
                             style: TextStyle(
                               color: Color(0xFFFFC727),
                               fontFamily: 'Montserrat',
@@ -64,83 +64,55 @@ class CambiarContraScreen extends StatelessWidget {
                         height: 10.0,
                       ),
                       TextoDes2Screen(
-                        texto:
-                            'Para cambiar tu contraseña debes ingresar primero tu contraseña actual y luego tu nuevo contraseña.',
+                        texto: 'Aquí puedes cambiar tus datos personales',
                         leftPadding: 0.43,
                         rightPadding: 0.44,
                         topPadding: 0.32,
                       ),
                       SizedBox(
-                        height: 20.0,
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            'Contraseña actual',
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xFFFFFFFF),
-                                fontFamily: 'Montserrat'),
-                          ),
-                        ],
+                        height: 24.0,
                       ),
                       UserInput2Field(
-                        icon: Icons.lock_clock_outlined,
-                        text: 'Contraseña',
+                        icon: Icons.person_pin,
+                        text: 'Nombre Completo',
+                      ),
+                      SizedBox(height: 10),
+                      CustomInputField(
+                        hintText: 'Escribe tu nombre y apellidos',
+                      ),
+                      SizedBox(height: 6),
+                      UserInput2Field(
+                        icon: Icons.calendar_month,
+                        text: 'Fecha de nacimiento',
                       ),
                       SizedBox(height: 2),
                       CustomInputField(
-                        hintText: 'Escribe tu contraseña actual',
-                        obscureText: true,
-                        suffixIcon: Icons.visibility,
+                        hintText: 'Ingresa tu fecha de nacimiento',
                       ),
-                      SizedBox(
-                        height: 20.0,
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            'Contraseña nueva',
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xFF000000),
-                                fontFamily: 'Montserrat'),
-                          ),
-                        ],
-                      ),
+                      SizedBox(height: 6),
                       UserInput2Field(
-                        icon: Icons.lock_clock_outlined,
-                        text: 'Contraseña',
+                        icon: Icons.pin_drop_outlined,
+                        text: 'Dirección',
                       ),
                       SizedBox(height: 2),
                       CustomInputField(
-                        hintText: 'Escribe tu nueva contraseña',
-                        obscureText: true,
-                        suffixIcon: Icons.visibility,
+                        hintText: 'Ingresa tu dirección',
                       ),
-                      SizedBox(
-                        height: 20.0,
-                      ),
+                      SizedBox(height: 6),
                       UserInput2Field(
-                        icon: Icons.lock_clock_outlined,
-                        text: 'Contraseña',
+                        icon: Icons.call,
+                        text: 'Numero de contacto',
                       ),
                       SizedBox(height: 2),
                       CustomInputField(
-                        hintText: 'Confirma tu nueva contraseña',
-                        obscureText: true,
-                        suffixIcon: Icons.visibility,
-                      ),
-                      SizedBox(
-                        height: 20.0,
+                        hintText: 'Ingresa tu numero de contacto',
                       ),
                     ],
                   ),
                 ),
               ),
 
+              //AVATAR A LA DERECHA
               Positioned(
                 top: 10, // Ajusta la posición según sea necesario
                 right: MediaQuery.of(context).size.width *
@@ -161,7 +133,7 @@ class CambiarContraScreen extends StatelessWidget {
               ),
 
               CustomElevatedButton(
-                buttonText: 'Cambiar Contraseña',
+                buttonText: 'Guardar',
                 onPressed: () {
                   Navigator.pushNamed(context, 'login2');
                 },
