@@ -53,21 +53,126 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
 
-              const Positioned(
-                top: 100,
+              Positioned(
+                top: 70,
                 left: 54,
                 right: 54,
                 child: Center(
-                  child: Text(
-                    '!Como van las vacaciones! en Argentina',
-                    textAlign: TextAlign.center, // Alinear el texto al centro
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight
-                          .w600, // Utilizar FontWeight.w600 para un peso de fuente de 600
-                      color:
-                          Colors.white, // Cambiar el color del texto a blanco
-                      fontFamily: 'Montserrat',
+                  child: Container(
+                    constraints: const BoxConstraints(
+                      maxWidth: 330,
+                      maxHeight: 500,
+                    ),
+                    // Ancho máximo del texto
+                    child: const Text(
+                      '!Como van las vacaciones! en Argentina',
+                      textAlign: TextAlign.center, // Alinear el texto al centro
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                        fontFamily: 'Montserrat',
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              Positioned(
+                top: 270,
+                left: 54,
+                right: 54,
+                child: Center(
+                  child: Container(
+                    constraints: BoxConstraints(
+                      maxWidth: 330,
+                      maxHeight: 500,
+                    ),
+                    // Ancho máximo del texto
+                    child: Text(
+                      'Presupuesto para las vacaciones',
+                      textAlign: TextAlign.center, // Alinear el texto al centro
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                        fontFamily: 'Montserrat',
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              Positioned(
+                top: 300,
+                left: 54,
+                right: 54,
+                child: Center(
+                  child: Container(
+                    constraints: const BoxConstraints(
+                      maxWidth: 330,
+                      maxHeight: 500,
+                    ),
+                    // Ancho máximo del texto
+                    child: const Text(
+                      '\$ 1.538.000',
+                      textAlign: TextAlign.center, // Alinear el texto al centro
+                      style: TextStyle(
+                        fontSize: 34,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xFFFFC727),
+                        fontFamily: 'Montserrat',
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              Positioned(
+                top: 350,
+                left: 54,
+                right: 54,
+                child: Center(
+                  child: Container(
+                    constraints: const BoxConstraints(
+                      maxWidth: 330,
+                      maxHeight: 500,
+                    ),
+                    // Ancho máximo del texto
+                    child: const Text(
+                      'Presupuesto Restante',
+                      textAlign: TextAlign.center, // Alinear el texto al centro
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                        fontFamily: 'Montserrat',
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              Positioned(
+                top: 380,
+                left: 54,
+                right: 54,
+                child: Center(
+                  child: Container(
+                    constraints: const BoxConstraints(
+                      maxWidth: 330,
+                      maxHeight: 500,
+                    ),
+                    // Ancho máximo del texto
+                    child: const Text(
+                      '\$ 1.247.000',
+                      textAlign: TextAlign.center, // Alinear el texto al centro
+                      style: TextStyle(
+                        fontSize: 34,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xFFFF6600),
+                        fontFamily: 'Montserrat',
+                      ),
                     ),
                   ),
                 ),
@@ -81,6 +186,13 @@ class HomeScreen extends StatelessWidget {
                   assetImagePath: 'assets/avatar.jpg',
                   radius: 24,
                 ),
+              ),
+
+              Positioned(
+                top: 150,
+                left: 0,
+                right: 0,
+                child: MyWidget(),
               ),
             ], // Aquí se cierra el children del Stack
           ),

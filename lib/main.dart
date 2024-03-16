@@ -22,8 +22,8 @@ class MyApp extends StatelessWidget {
           'cambiar_contra': (_) => CambiarContraScreen(),
           'cambiar_datos': (_) => DatosPersonalesScreen(),
           'panorama': (_) => PanoramaScreen(),
-          'GatosControlados': (_) => PanoramaScreen(),
-          'fechas': (_) => FechasViajesScreen(),
+          'GatosControlados': (_) => GatosControladosScreen(),
+          'fechasViajes': (_) => FechasViajesScreen(),
           'login2': (_) => Login2Screen(),
           'onboarding2': (_) => Onboarding2Screen(),
           'onboarding': (_) => OnboardingScreen()
