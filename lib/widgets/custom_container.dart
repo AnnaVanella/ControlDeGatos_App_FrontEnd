@@ -33,21 +33,23 @@ import 'package:flutter/material.dart';
 
 class CustomContainer extends StatelessWidget {
   final Widget child;
+  final Color? color;
   // final Color? color;
 
-  const CustomContainer({Key? key, required this.child}) : super(key: key);
+  const CustomContainer({Key? key, required this.child, this.color})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(50.0),
           topRight: Radius.circular(50.0),
         ),
-        color: Color(0xFF46494E),
+        color: color ?? Color(0xFF46494E),
       ),
       child: Padding(
         padding: const EdgeInsets.all(20.0),

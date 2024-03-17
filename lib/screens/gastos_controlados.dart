@@ -30,18 +30,24 @@ class GatosControladosScreen extends StatelessWidget {
                 left: 0,
                 right: 0,
                 child: CustomContainer(
+                  color: Colors.white,
                   child: Column(
                     children: [
-                      TextoLoginScreen(
-                        texto: '¡owo!',
+                      IconoTexto(
+                        icon: Icons.luggage_outlined,
+                        text: 'Gastos controlados',
+                        iconColor: Color(0xFF149A61),
+                        iconSize: 36,
+                        textColor: Color(0xFF149A61),
+                        textSize: 28,
                       ),
                       SizedBox(
-                        height: 10.0,
+                        height: 1.0,
                       ),
-                      TextoDes2Screen(
-                        texto: 'owo.',
-                        leftPadding: 0.1,
-                        rightPadding: 0.1,
+                      SubtextoScreen(
+                        texto: 'Aquí puedes ver todos tus gastos:',
+                        leftPadding: 0.01,
+                        rightPadding: 0.01,
                         topPadding: 0.32,
                       ),
                     ],
@@ -91,6 +97,15 @@ class GatosControladosScreen extends StatelessWidget {
                 left: 0,
                 right: 0,
                 child: MyWidget(),
+              ),
+
+              CustomElevatedButton(
+                buttonText: 'cerrar',
+                onPressed: () {
+                  Navigator.pushNamed(context, 'home');
+                },
+                top: 900,
+                right: 84,
               ),
             ], // Aquí se cierra el children del Stack
           ),

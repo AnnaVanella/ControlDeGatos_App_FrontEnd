@@ -30,18 +30,24 @@ class FechasViajesScreen extends StatelessWidget {
                 left: 0,
                 right: 0,
                 child: CustomContainer(
+                  color: Colors.white,
                   child: Column(
                     children: [
-                      TextoLoginScreen(
-                        texto: '¡owo!',
+                      IconoTexto(
+                        icon: Icons.flight,
+                        text: 'Fechas del viaje',
+                        iconColor: Color(0xFF149A61),
+                        iconSize: 36,
+                        textColor: Color(0xFF149A61),
+                        textSize: 28,
                       ),
                       SizedBox(
-                        height: 10.0,
+                        height: 1.0,
                       ),
-                      TextoDes2Screen(
-                        texto: 'owo.',
-                        leftPadding: 0.1,
-                        rightPadding: 0.1,
+                      SubtextoScreen(
+                        texto: 'Aquí puedes ver tus viajes programados:',
+                        leftPadding: 0.01,
+                        rightPadding: 0.01,
                         topPadding: 0.32,
                       ),
                     ],

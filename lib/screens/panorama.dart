@@ -30,18 +30,23 @@ class PanoramaScreen extends StatelessWidget {
                 left: 0,
                 right: 0,
                 child: CustomContainer(
+                  color: Colors.white,
                   child: Column(
                     children: [
-                      TextoLoginScreen(
-                        texto:
-                            '¡Bienvenido a tu gestor de gastos personalizado para tus uwu!',
+                      IconoTexto(
+                        icon: Icons.mode_of_travel,
+                        text: 'Panorama de vacaciones',
+                        iconColor: Color(0xFF149A61),
+                        iconSize: 36,
+                        textColor: Color(0xFF149A61),
+                        textSize: 28,
                       ),
                       SizedBox(
                         height: 10.0,
                       ),
-                      TextoDes2Screen(
+                      SubtextoScreen(
                         texto:
-                            'Por favor, proporciona la información requerida para crear tu cuenta.',
+                            'Aquí puedes ver todos lugares visitados dentro de tus vacaciones:',
                         leftPadding: 0.1,
                         rightPadding: 0.1,
                         topPadding: 0.32,
@@ -93,6 +98,15 @@ class PanoramaScreen extends StatelessWidget {
                 left: 0,
                 right: 0,
                 child: MyWidget(),
+              ),
+
+              CustomElevatedButton(
+                buttonText: 'cerrar',
+                onPressed: () {
+                  Navigator.pushNamed(context, 'home');
+                },
+                top: 900,
+                right: 84,
               ),
             ], // Aquí se cierra el children del Stack
           ),

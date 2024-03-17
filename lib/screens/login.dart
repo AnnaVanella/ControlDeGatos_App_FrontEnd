@@ -98,7 +98,7 @@ class Login2Screen extends StatelessWidget {
             ),
           ),
 
-          // Botón personalizado en la esquina inferior derecha
+          // Botón de texto personalizado en la esquina inferior derecha
           Positioned(
             bottom: 300,
             right: 20,
@@ -112,6 +112,7 @@ class Login2Screen extends StatelessWidget {
               },
             ),
           ),
+
           CustomElevatedButton(
             buttonText: 'Ingresar',
             onPressed: () {
