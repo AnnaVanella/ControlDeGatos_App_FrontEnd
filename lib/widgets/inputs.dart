@@ -54,8 +54,8 @@ class CustomInputField extends StatelessWidget {
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
             borderSide: const BorderSide(
-              color: Color(0xFFBF951D), //
-              width: 40.0,
+              color: const Color(0xFFFFC727), // Color del borde
+              width: 2.0, // Grosor del borde
             ),
           ),
           contentPadding:

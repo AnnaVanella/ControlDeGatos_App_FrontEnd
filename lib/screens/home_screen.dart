@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            DrawerHeader(
+            const DrawerHeader(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -43,7 +43,7 @@ class HomeScreen extends StatelessWidget {
               child: const CircularAvatar(
                   assetImagePath: 'assets/avatar.jpg', radius: 70),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
 
             //AQUI VA EL NOMBRE DEL USUARIO
             const Text(
@@ -57,25 +57,36 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
 
+            const SizedBox(
+              height: 18,
+            ),
+            // Aquí agregamos la línea
+            CustomPaint(
+              size: Size(double.infinity, 2),
+              painter: LinePainter(),
+            ),
+
+            const SizedBox(
+              height: 10,
+            ),
+
+            CustomTextButton(
+                icon: Icons.key_outlined,
+                buttonText: 'Modificar datos',
+                textColor: Colors.black,
+                onPressed: () {
+                  Navigator.pushNamed(context, 'cambiar_datos');
+                }),
+
+            CustomTextButton(
+                icon: Icons.edit,
+                buttonText: 'Cambiar contraseña',
+                textColor: Colors.black,
+                onPressed: () {
+                  Navigator.pushNamed(context, 'cambiar_contra');
+                }),
+
             //aqui las opciones del menu
-            ListTile(
-              title: Text('Opción 1'),
-              onTap: () {
-                // Manejar la acción de la opción 1
-              },
-            ),
-            ListTile(
-              title: Text('Opción 2'),
-              onTap: () {
-                // Manejar la acción de la opción 2
-              },
-            ),
-            ListTile(
-              title: Text('Opción 3'),
-              onTap: () {
-                // Manejar la acción de la opción 3
-              },
-            ),
           ],
         ),
       ),
@@ -85,17 +96,21 @@ class HomeScreen extends StatelessWidget {
           child: Stack(
             children: [
               // Fondo de la imagen
-              Positioned(
-                child: Image.asset(
-                  'assets/home1.jpg',
-                  alignment: Alignment.topCenter,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                  height: 492.0,
+              Container(
+                width: double.infinity,
+                height: 492.0,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/home1.jpg'),
+                    alignment: Alignment.topCenter,
+                    fit: BoxFit.cover,
+                    colorFilter: ColorFilter.mode(
+                        Colors.grey.withOpacity(0.3), BlendMode.srcOver),
+                  ),
                 ),
               ),
 
-              Positioned(
+              const Positioned(
                 top: 440,
                 left: 0,
                 right: 0,
@@ -125,7 +140,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
 
-              Positioned(
+              const Positioned(
                 top: 720,
                 left: 0,
                 right: 0,
@@ -185,11 +200,11 @@ class HomeScreen extends StatelessWidget {
                 right: 54,
                 child: Center(
                   child: Container(
-                    constraints: BoxConstraints(
+                    constraints: const BoxConstraints(
                       maxWidth: 330,
                       maxHeight: 500,
                     ),
-                    child: Text(
+                    child: const Text(
                       'Presupuesto para las vacaciones',
                       textAlign: TextAlign.center,
                       style: TextStyle(
@@ -284,20 +299,75 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
 
-              CustomMenuButton(),
+              const CustomMenuButton(),
 
               Positioned(
-                top: 546,
+                top: 540,
                 right: 16,
                 child: CustomTextButton(
                   icon: Icons.add,
                   iconSize: 20,
-                  iconColor: Color(0xFF149A61),
+                  iconColor: const Color(0xFF149A61),
                   buttonText: 'Agregar panorama',
                   fontSize: 16,
-                  textColor: Color(0xFF149A61),
+                  textColor: const Color(0xFF149A61),
                   onPressed: () {
-                    Navigator.pushNamed(context, 'recuperar_contra');
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return CustomModalBottomSheet(
+                            child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text(
+                              'Agregar proximo panorama',
+                              style:
+                                  TextStyle(fontSize: 24, color: Colors.black),
+                              textAlign: TextAlign.start,
+                            ),
+                            const SizedBox(height: 20),
+                            const IconoTexto(
+                              icon: Icons.access_time,
+                              iconColor: Colors.black,
+                              text: 'Hora',
+                            ),
+                            const SizedBox(height: 4),
+                            const CustomInputField(
+                              hintText: 'Escribe la hora del panorama',
+                            ),
+                            const SizedBox(height: 10),
+                            const IconoTexto(
+                              icon: Icons.calendar_month_outlined,
+                              iconColor: Colors.black,
+                              text: 'Fecha',
+                            ),
+                            const SizedBox(height: 4),
+                            const CustomInputField(
+                              hintText: 'Escribe la fecha del panorama',
+                            ),
+                            const SizedBox(height: 10),
+                            const IconoTexto(
+                              icon: Icons.mode_of_travel,
+                              iconColor: Colors.black,
+                              text: 'Panorama',
+                            ),
+                            const SizedBox(height: 4),
+                            const CustomInputField(
+                              hintText: 'Escribe el nombre del panorama',
+                            ),
+                            const SizedBox(height: 40),
+                            CustomElevatedButton(
+                              buttonText: 'Guardar',
+                              onPressed: () {
+                                Navigator.pushNamed(context, 'login2');
+                              },
+                              top: MediaQuery.of(context).size.height * 0.9,
+                              right: 84,
+                            ),
+                          ],
+                        )); // Aquí retornas el contenido del modal
+                      },
+                    );
                   },
                 ),
               ),
@@ -308,12 +378,60 @@ class HomeScreen extends StatelessWidget {
                 child: CustomTextButton(
                   icon: Icons.add,
                   iconSize: 20,
-                  iconColor: Color(0xFF149A61),
+                  iconColor: const Color(0xFF149A61),
                   buttonText: 'Agregar cargo',
                   fontSize: 16,
-                  textColor: Color(0xFF149A61),
+                  textColor: const Color(0xFF149A61),
                   onPressed: () {
-                    Navigator.pushNamed(context, 'recuperar_contra');
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return Align(
+                          alignment: Alignment.bottomCenter,
+                          child: CustomModalBottomSheet(
+                              child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                'Agregar nuevo gasto',
+                                style: TextStyle(
+                                    fontSize: 24, color: Colors.black),
+                                textAlign: TextAlign.start,
+                              ),
+                              const SizedBox(height: 20),
+                              const IconoTexto(
+                                icon: Icons.table_rows_outlined,
+                                iconColor: Colors.black,
+                                text: 'Nombre del gasto',
+                              ),
+                              const SizedBox(height: 4),
+                              const CustomInputField(
+                                hintText: 'Escribe el nombre de tu gasto',
+                              ),
+                              const SizedBox(height: 10),
+                              const IconoTexto(
+                                icon: Icons.monetization_on_outlined,
+                                iconColor: Colors.black,
+                                text: 'Valor del gasto',
+                              ),
+                              const SizedBox(height: 4),
+                              const CustomInputField(
+                                hintText: 'Escribe el valor de tu gasto',
+                              ),
+                              const SizedBox(height: 40),
+                              CustomElevatedButton(
+                                buttonText: 'Guardar',
+                                onPressed: () {
+                                  Navigator.pushNamed(context, 'login2');
+                                },
+                                // top: MediaQuery.of(context).size.height * 0.10,
+                                // right: 84,
+                              ),
+                            ],
+                          )),
+                        ); // Aquí retornas el contenido del modal
+                      },
+                    );
                   },
                 ),
               ),

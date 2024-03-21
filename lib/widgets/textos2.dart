@@ -88,3 +88,24 @@ class SubtextoScreen extends StatelessWidget {
     );
   }
 }
+
+//Widget de Linea:
+class LinePainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final Paint paint = Paint()
+      ..color = Color(0xFF46494E) // Color de la línea
+      ..strokeWidth = 2 // Ancho de la línea
+      ..strokeCap = StrokeCap.round;
+
+    final Offset start = Offset(0, size.height / 2);
+    final Offset end = Offset(size.width, size.height / 2);
+
+    canvas.drawLine(start, end, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return false;
+  }
+}
