@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import '../widgets/widgets.dart';
 
 class PanoramaScreen extends StatelessWidget {
@@ -33,13 +34,8 @@ class PanoramaScreen extends StatelessWidget {
             ),
 
             //AQUI VA LA IMAGEN DEL USUARIO
-            Positioned(
-              top: 10, // Ajusta la posición según sea necesario
-              right: MediaQuery.of(context).size.width *
-                  0.02, // Centra horizontalmente
-              child: const CircularAvatar(
-                  assetImagePath: 'assets/avatar.jpg', radius: 70),
-            ),
+            const CircularAvatar(
+                assetImagePath: 'assets/avatar.jpg', radius: 70),
             const SizedBox(height: 8),
 
             //AQUI VA EL NOMBRE DEL USUARIO
@@ -88,113 +84,170 @@ class PanoramaScreen extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        child: Container(
-          height: MediaQuery.of(context).size.height,
-          child: Stack(
-            children: [
-              // Fondo de la imagen
-              Container(
-                width: double.infinity,
-                height: 492.0,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/home1.jpg'),
-                    alignment: Alignment.topCenter,
-                    fit: BoxFit.cover,
-                    colorFilter: ColorFilter.mode(
-                        Colors.grey.withOpacity(0.3), BlendMode.srcOver),
-                  ),
-                ),
-              ),
+        child: ConstrainedBox(
+          constraints:
+              BoxConstraints(minHeight: MediaQuery.of(context).size.height),
 
-              const Positioned(
-                top: 270,
-                // bottom: 0,
-                left: 0,
-                right: 0,
-                child: CustomContainer(
-                  color: Colors.white,
-                  child: Column(
+          // height: MediaQuery.of(context).size.height,
+          child: IntrinsicHeight(
+            child: Column(
+              children: [
+                Expanded(
+                  child: Stack(
                     children: [
-                      IconoTexto(
-                        icon: Icons.mode_of_travel,
-                        text: 'Panorama de vacaciones',
-                        iconColor: Color(0xFF149A61),
-                        iconSize: 36,
-                        textColor: Color(0xFF149A61),
-                        textSize: 28,
+                      // Fondo de la imagen
+                      Container(
+                        width: double.infinity,
+                        height: 492.0,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/home1.jpg'),
+                            alignment: Alignment.topCenter,
+                            fit: BoxFit.cover,
+                            colorFilter: ColorFilter.mode(
+                                Colors.grey.withOpacity(0.3),
+                                BlendMode.srcOver),
+                          ),
+                        ),
                       ),
-                      SizedBox(
-                        height: 10.0,
+
+                      const Positioned(
+                        top: 270,
+                        // bottom: 0,
+                        left: 0,
+                        right: 0,
+
+                        child: CustomContainer(
+                          color: Colors.white,
+                          child: Column(
+                            children: [
+                              IconoTexto(
+                                icon: Icons.mode_of_travel,
+                                text: 'Panorama de vacaciones',
+                                iconColor: Color(0xFF149A61),
+                                iconSize: 36,
+                                textColor: Color(0xFF149A61),
+                                textSize: 28,
+                              ),
+                              SizedBox(
+                                height: 10.0,
+                              ),
+                              SubtextoScreen(
+                                texto:
+                                    'Aquí puedes ver todos lugares visitados dentro de tus vacaciones:',
+                                leftPadding: 0.1,
+                                rightPadding: 0.1,
+                                topPadding: 0.32,
+                              ),
+                              SizedBox(
+                                height: 10.0,
+                              ),
+                              ColumnTablePanorama(
+                                column1Data: [
+                                  '16:24 pm',
+                                  '16:13 pm',
+                                  '16:04 pm',
+                                  '15:28 pm',
+                                  '15:47 pm',
+                                  '14:12 pm',
+                                  '1:34 pm'
+                                ],
+                                column2Data: [
+                                  'Heladeria Crosft',
+                                  'Zara',
+                                  'Zara',
+                                  'Zara',
+                                  'Yakissbo Mundial',
+                                  'Wanderlunst bar e cozinha',
+                                  'Zara,' 'Yakissbo Mundial'
+                                ],
+                              ),
+                              ColumnTablePanorama(
+                                column1Data: [
+                                  '16:24 pm',
+                                  '16:13 pm',
+                                  '16:04 pm',
+                                  '15:28 pm',
+                                  '15:47 pm',
+                                  '14:12 pm',
+                                  '1:34 pm'
+                                ],
+                                column2Data: [
+                                  'Heladeria Crosft',
+                                  'Zara',
+                                  'Zara',
+                                  'Zara',
+                                  'Yakissbo Mundial',
+                                  'Wanderlunst bar e cozinha',
+                                  'Zara,' 'Yakissbo Mundial'
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
-                      SubtextoScreen(
-                        texto:
-                            'Aquí puedes ver todos lugares visitados dentro de tus vacaciones:',
-                        leftPadding: 0.1,
-                        rightPadding: 0.1,
-                        topPadding: 0.32,
+
+                      Positioned(
+                        top: 70,
+                        left: 54,
+                        right: 54,
+                        child: Center(
+                          child: Container(
+                            constraints: const BoxConstraints(
+                              maxWidth: 330,
+                              maxHeight: 500,
+                            ),
+                            // Ancho máximo del texto
+                            child: const Text(
+                              '!Como van las vacaciones!',
+                              textAlign: TextAlign
+                                  .center, // Alinear el texto al centro
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white,
+                                fontFamily: 'Montserrat',
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
-                    ],
+
+                      //AVATAR A LA DERECHA
+                      Positioned(
+                        top: 10, // Ajusta la posición según sea necesario
+                        right: MediaQuery.of(context).size.width *
+                            0.02, // Centra horizontalmente
+                        child: const CircularAvatar(
+                          assetImagePath: 'assets/avatar.jpg',
+                          radius: 24,
+                        ),
+                      ),
+
+                      //Icono del menu
+                      const CustomMenuButton(),
+
+                      //BOTONES DEL HOME
+                      const Positioned(
+                        top: 130,
+                        left: 0,
+                        right: 0,
+                        child: MyWidget1(),
+                      ),
+
+                      CustomElevatedButton(
+                        buttonText: 'cerrar',
+                        onPressed: () {
+                          Navigator.pushNamed(context, 'home');
+                        },
+                        top: 900,
+                        right: 84,
+                      ),
+                    ], // Aquí se cierra el children del Stack
                   ),
                 ),
-              ),
-
-              Positioned(
-                top: 70,
-                left: 54,
-                right: 54,
-                child: Center(
-                  child: Container(
-                    constraints: const BoxConstraints(
-                      maxWidth: 330,
-                      maxHeight: 500,
-                    ),
-                    // Ancho máximo del texto
-                    child: const Text(
-                      '!Como van las vacaciones!',
-                      textAlign: TextAlign.center, // Alinear el texto al centro
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                        fontFamily: 'Montserrat',
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-
-              //AVATAR A LA DERECHA
-              Positioned(
-                top: 10, // Ajusta la posición según sea necesario
-                right: MediaQuery.of(context).size.width *
-                    0.02, // Centra horizontalmente
-                child: const CircularAvatar(
-                  assetImagePath: 'assets/avatar.jpg',
-                  radius: 24,
-                ),
-              ),
-
-              //Icono del menu
-              const CustomMenuButton(),
-
-              //BOTONES DEL HOME
-              const Positioned(
-                top: 130,
-                left: 0,
-                right: 0,
-                child: MyWidget1(),
-              ),
-
-              CustomElevatedButton(
-                buttonText: 'cerrar',
-                onPressed: () {
-                  Navigator.pushNamed(context, 'home');
-                },
-                top: 900,
-                right: 84,
-              ),
-            ], // Aquí se cierra el children del Stack
+              ],
+            ),
           ),
         ),
       ),

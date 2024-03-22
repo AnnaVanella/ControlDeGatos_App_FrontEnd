@@ -45,12 +45,12 @@ class CustomContainer extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       decoration: BoxDecoration(
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(50.0),
-          topRight: Radius.circular(50.0),
-        ),
-        color: color ?? Color(0xFF46494E),
-      ),
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(50.0),
+            topRight: Radius.circular(50.0),
+          ),
+          color: color ?? Color(0xFF46494E),
+          border: Border.all(color: Colors.black)),
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: child,

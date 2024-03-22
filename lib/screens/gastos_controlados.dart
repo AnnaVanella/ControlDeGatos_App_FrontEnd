@@ -133,10 +133,92 @@ class GatosControladosScreen extends StatelessWidget {
                         rightPadding: 0.01,
                         topPadding: 0.32,
                       ),
-                      ColumnTable(
-                        column1Data: ['16:24 pm', '16:13 pm'],
-                        column2Data: ['Heladeria Crosft', 'Zara'],
-                        column3Data: ['-\$12.000', '-\$61.000'],
+                      ColumnTableGastos(
+                        column1Data: [
+                          '16:24 pm',
+                          '16:13 pm',
+                          '16:04 pm',
+                          '15:28 pm',
+                          '15:47 pm',
+                          '14:12 pm',
+                          '1:34 pm'
+                        ],
+                        column2Data: [
+                          'Heladeria Crosft',
+                          'Zara',
+                          'Zara',
+                          'Zara',
+                          'Yakissbo Mundial',
+                          'Wanderlunst bar e cozinha',
+                          'Zara,' 'Yakissbo Mundial'
+                        ],
+                        column3Data: [
+                          '-\$12.000',
+                          '-\$61.000',
+                          '-\$83.000',
+                          '-\$29.300',
+                          '-\$10.000',
+                          '-\$22.000',
+                          '-\$29.300',
+                        ],
+                      ),
+                      ColumnTableGastos(
+                        column1Data: [
+                          '16:24 pm',
+                          '16:13 pm',
+                          '16:04 pm',
+                          '15:28 pm',
+                          '15:47 pm',
+                          '14:12 pm',
+                          '1:34 pm'
+                        ],
+                        column2Data: [
+                          'Heladeria Crosft',
+                          'Zara',
+                          'Zara',
+                          'Zara',
+                          'Yakissbo Mundial',
+                          'Wanderlunst bar e cozinha',
+                          'Zara,' 'Yakissbo Mundial'
+                        ],
+                        column3Data: [
+                          '-\$12.000',
+                          '-\$61.000',
+                          '-\$83.000',
+                          '-\$29.300',
+                          '-\$10.000',
+                          '-\$22.000',
+                          '-\$29.300',
+                        ],
+                      ),
+                      ColumnTableGastos(
+                        column1Data: [
+                          '16:24 pm',
+                          '16:13 pm',
+                          '16:04 pm',
+                          '15:28 pm',
+                          '15:47 pm',
+                          '14:12 pm',
+                          '1:34 pm'
+                        ],
+                        column2Data: [
+                          'Heladeria Crosft',
+                          'Zara',
+                          'Zara',
+                          'Zara',
+                          'Yakissbo Mundial',
+                          'Wanderlunst bar e cozinha',
+                          'Zara,' 'Yakissbo Mundial'
+                        ],
+                        column3Data: [
+                          '-\$12.000',
+                          '-\$61.000',
+                          '-\$83.000',
+                          '-\$29.300',
+                          '-\$10.000',
+                          '-\$22.000',
+                          '-\$29.300',
+                        ],
                       )
                     ],
                   ),
