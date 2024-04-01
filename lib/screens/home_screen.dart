@@ -14,24 +14,31 @@ class HomeScreen extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            const DrawerHeader(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.menu,
-                    color: Color(0xFF000000),
-                    size: 40,
-                  ),
-                  SizedBox(height: 8),
-                  Text(
-                    'Menú',
-                    style: TextStyle(
+            DrawerHeader(
+              child: GestureDetector(
+                onTap: () {
+                  // Navegar al inicio (home)
+                  Navigator.pop(context); // Cerrar el drawer
+                  Navigator.pushNamed(context, 'home'); // Navegar al inicio
+                },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.menu,
                       color: Color(0xFF000000),
-                      fontSize: 24,
+                      size: 40,
                     ),
-                  ),
-                ],
+                    SizedBox(height: 8),
+                    Text(
+                      'Menú',
+                      style: TextStyle(
+                        color: Color(0xFF000000),
+                        fontSize: 24,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
 
@@ -135,11 +142,32 @@ class HomeScreen extends StatelessWidget {
                         rightPadding: 0.06,
                         topPadding: 0.32,
                       ),
+                      ColumnTablePanorama(
+                        column1Data: [
+                          '16:24 pm',
+                          '16:13 pm',
+                          '16:04 pm',
+                          '15:28 pm',
+                          '15:47 pm',
+                          '14:12 pm',
+                          '1:34 pm'
+                        ],
+                        column2Data: [
+                          'Heladeria Crosft',
+                          'Zara',
+                          'Zara',
+                          'Zara',
+                          'Yakissbo Mundial',
+                          'Wanderlunst bar e cozinha',
+                          'Zara,' 'Yakissbo Mundial'
+                        ],
+                      ),
                     ],
                   ),
                 ),
               ),
 
+//container de los gastos del home
               const Positioned(
                 top: 720,
                 left: 0,
@@ -164,6 +192,35 @@ class HomeScreen extends StatelessWidget {
                         leftPadding: 0.1,
                         rightPadding: 0.1,
                         topPadding: 0.32,
+                      ),
+                      ColumnTableGastos(
+                        column1Data: [
+                          '16:24 pm',
+                          '16:13 pm',
+                          '16:04 pm',
+                          '15:28 pm',
+                          '15:47 pm',
+                          '14:12 pm',
+                          '1:34 pm'
+                        ],
+                        column2Data: [
+                          'Heladeria Crosft',
+                          'Zara',
+                          'Zara',
+                          'Zara',
+                          'Yakissbo Mundial',
+                          'Wanderlunst bar e cozinha',
+                          'Zara,' 'Yakissbo Mundial'
+                        ],
+                        column3Data: [
+                          '-\$12.000',
+                          '-\$61.000',
+                          '-\$83.000',
+                          '-\$29.300',
+                          '-\$10.000',
+                          '-\$22.000',
+                          '-\$29.300',
+                        ],
                       ),
                     ],
                   ),

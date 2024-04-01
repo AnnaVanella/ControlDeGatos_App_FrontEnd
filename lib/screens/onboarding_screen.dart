@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hegga_controldegastos_frontend/screens/login.dart';
 import 'package:flutter_onboarding_slider/flutter_onboarding_slider.dart';
-import 'package:introduction_screen/introduction_screen.dart';
 
 import '../widgets/widgets.dart';
 
@@ -13,7 +12,7 @@ class OnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OnBoardingSlider(
-      finishButtonText: 'Register',
+      finishButtonText: 'Ingresar',
       onFinish: () {
         Navigator.push(
           context,
@@ -26,9 +25,9 @@ class OnboardingScreen extends StatelessWidget {
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(10.0))),
         hoverColor: Color(0xFFFFC727),
-        foregroundColor: Color(0xFFFFC727),
+        foregroundColor: Colors.black,
         splashColor: Color(0xFFFFC727),
-        backgroundColor: Color(0xFFFFEEBC),
+        backgroundColor: Color(0xFFFFC727),
       ),
       skipTextButton: Text(
         '',
@@ -210,14 +209,14 @@ class OnboardingScreen extends StatelessWidget {
               const SizedBox(
                 height: 46,
               ),
-              CustomTextButton(
-                key: UniqueKey(),
-                buttonText: 'ingresar',
-                icon: Icons.add,
-                onPressed: () {
-                  Navigator.pushNamed(context, 'login2');
-                },
-              ),
+              // CustomTextButton(
+              //   key: UniqueKey(),
+              //   buttonText: 'ingresar',
+              //   icon: Icons.add,
+              //   onPressed: () {
+              //     Navigator.pushNamed(context, 'login2');
+              //   },
+              // ),
             ],
           ),
         ),

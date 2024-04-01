@@ -7,6 +7,7 @@ class CrearCuentaIpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final GlobalKey<FormState> myFormKey = GlobalKey<FormState>();
+    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -33,70 +34,108 @@ class CrearCuentaIpScreen extends StatelessWidget {
                 left: 0,
                 right: 0,
                 child: CustomContainer(
-                  child: Column(
+                  child: Form(
                     key: myFormKey,
-                    children: const [
-                      TextoLoginScreen(
-                        texto:
-                            '¡Bienvenido a tu gestor de gastos personalizado para tus vacaciones!',
-                      ),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                      TextoDes2Screen(
-                        texto:
-                            'Por favor, proporciona la información requerida para crear tu cuenta.',
-                        leftPadding: 0.1,
-                        rightPadding: 0.1,
-                        topPadding: 0.32,
-                      ),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                      Text(
-                        'Informacion Personal',
-                        style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w600,
-                            color: Color(0xFFFFFFFF),
-                            fontFamily: 'Montserrat'),
-                      ),
-                      UserInput2Field(
-                        icon: Icons.person_pin,
-                        text: 'Nombre Completo',
-                      ),
-                      SizedBox(height: 2),
-                      CustomInputField(
-                        hintText: 'Escribe tu nombre y apellidos',
-                      ),
-                      SizedBox(height: 6),
-                      UserInput2Field(
-                        icon: Icons.calendar_month,
-                        text: 'Fecha de nacimiento',
-                      ),
-                      SizedBox(height: 2),
-                      CustomInputField(
-                        hintText: 'Ingresa tu fecha de nacimiento',
-                      ),
-                      SizedBox(height: 6),
-                      UserInput2Field(
-                        icon: Icons.pin_drop_outlined,
-                        text: 'Dirección',
-                      ),
-                      SizedBox(height: 2),
-                      CustomInputField(
-                        hintText: 'Ingresa tu dirección',
-                      ),
-                      SizedBox(height: 6),
-                      UserInput2Field(
-                        icon: Icons.call,
-                        text: 'Numero de contacto',
-                      ),
-                      SizedBox(height: 2),
-                      CustomInputField(
-                        hintText: 'Ingresa tu numero de contacto',
-                      ),
-                    ],
+                    child: Column(
+                      children: [
+                        const TextoLoginScreen(
+                          texto:
+                              '¡Bienvenido a tu gestor de gastos personalizado para tus vacaciones!',
+                        ),
+                        const SizedBox(
+                          height: 10.0,
+                        ),
+                        const TextoDes2Screen(
+                          texto:
+                              'Por favor, proporciona la información requerida para crear tu cuenta.',
+                          leftPadding: 0.1,
+                          rightPadding: 0.1,
+                          topPadding: 0.32,
+                        ),
+                        const SizedBox(
+                          height: 10.0,
+                        ),
+                        const Text(
+                          'Informacion Personal',
+                          style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xFFFFFFFF),
+                              fontFamily: 'Montserrat'),
+                        ),
+                        const UserInput2Field(
+                          icon: Icons.person_pin,
+                          text: 'Nombre Completo',
+                        ),
+                        const SizedBox(height: 2),
+                        CustomInputField(
+                          hintText: 'Escribe tu nombre y apellidos',
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Por favor, ingresa tu nombre y apellidos';
+                            }
+                            // Expresión regular que valida que solo contiene letras y espacios
+                            if (!RegExp(r'^[a-zA-Z\s]+$').hasMatch(value)) {
+                              return 'Ingresa solo letras';
+                            }
+                            return null;
+                          },
+                        ),
+                        const SizedBox(height: 6),
+                        const UserInput2Field(
+                          icon: Icons.calendar_month,
+                          text: 'Fecha de nacimiento',
+                        ),
+                        const SizedBox(height: 2),
+                        CustomInputField(
+                          hintText: 'Ingresa tu fecha de nacimiento',
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Por favor, ingresa tu fecha de nacimiento';
+                            }
+                            if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
+                              return 'Ingresa solo números';
+                            }
+                            return null;
+                          },
+                        ),
+                        const SizedBox(height: 6),
+                        const UserInput2Field(
+                          icon: Icons.pin_drop_outlined,
+                          text: 'Dirección',
+                        ),
+                        const SizedBox(height: 2),
+                        CustomInputField(
+                          hintText: 'Ingresa tu dirección',
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Por favor, ingresa tu dirección';
+                            }
+                            return null;
+                          },
+                        ),
+                        const SizedBox(height: 6),
+                        const UserInput2Field(
+                          icon: Icons.call,
+                          text: 'Numero de contacto',
+                        ),
+                        const SizedBox(height: 2),
+                        CustomInputField(
+                          hintText: 'Ingresa tu numero de contacto',
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Por favor, ingresa tu número de contacto';
+                            }
+                            // Expresión regular que valida que solo contiene números
+                            if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
+                              return 'Ingresa solo números';
+                            }
+                            // Agrega más validaciones según tus requisitos
+                            return null;
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -104,7 +143,13 @@ class CrearCuentaIpScreen extends StatelessWidget {
               CustomElevatedButton(
                 buttonText: 'Comenzar',
                 onPressed: () {
-                  Navigator.pushNamed(context, 'login2');
+                  // Validar el formulario
+                  // Verificar si currentState no es nulo antes de llamar a validate()
+                  if (myFormKey.currentState != null &&
+                      myFormKey.currentState!.validate()) {
+                    // Si el formulario es válido, navegar a la siguiente pantalla
+                    Navigator.pushNamed(context, 'login2');
+                  }
                 },
                 top: MediaQuery.of(context).size.height * 0.9,
                 right: 84,

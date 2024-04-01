@@ -5,7 +5,6 @@ export 'package:flutter_hegga_controldegastos_frontend/screens/datos_personales.
 export 'package:flutter_hegga_controldegastos_frontend/screens/fechas_viajes.dart';
 export 'package:flutter_hegga_controldegastos_frontend/screens/gastos_controlados.dart';
 export 'package:flutter_hegga_controldegastos_frontend/screens/home_screen.dart';
-export 'package:flutter_hegga_controldegastos_frontend/screens/login_screen.dart';
 export 'package:flutter_hegga_controldegastos_frontend/screens/login.dart';
 export 'package:flutter_hegga_controldegastos_frontend/screens/onboarding_screen.dart';
 export 'package:flutter_hegga_controldegastos_frontend/screens/onboarding_screen.dart';

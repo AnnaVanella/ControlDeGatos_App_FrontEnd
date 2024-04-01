@@ -9,6 +9,7 @@ class CustomInputField extends StatelessWidget {
   final IconData? suffixIcon;
   final TextInputType? keyboardType;
   final bool obscureText;
+  final String? Function(String?)? validator;
 
 //AÑADIR DESPUES LAS VALIDACIONES Y PROPIEDADES
   // final String formPropety;
@@ -22,6 +23,7 @@ class CustomInputField extends StatelessWidget {
     this.suffixIcon,
     this.keyboardType,
     this.obscureText = false,
+    this.validator, // Actualizar el constructor para incluir el parámetro validator
     //ACTIVAR CUANDO SE AÑADA
     // required this.formPropety,
     // required this.formValues,
@@ -39,7 +41,8 @@ class CustomInputField extends StatelessWidget {
         // onChanged: (value) {
         //   formValues[formPropety] = value;
         // },
-        // validator: (value) {
+        validator: validator,
+        // (value) {
         //   if (value == null) return 'este campo es requerido';
         //   // return value.length < 3 ? 'Minimo 3 letras' : null;
         // },

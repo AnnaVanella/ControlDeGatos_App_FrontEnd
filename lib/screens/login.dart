@@ -54,31 +54,56 @@ class Login2Screen extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(
                     top: 400, bottom: 150, right: 36, left: 36),
-                child: Column(
+                child: Form(
                   key: myFormKey,
-                  children: const [
-                    UserInput2Field(
-                      icon: Icons.person_2_outlined,
-                      text: 'Usuario',
-                    ),
-                    SizedBox(height: 2),
-                    CustomInputField(
-                      hintText: 'Escribe tu correo electronico',
-                      keyboardType: TextInputType.emailAddress,
-                    ),
-                    SizedBox(height: 6),
-                    UserInput2Field(
-                      icon: Icons.lock_clock_outlined,
-                      text: 'Contraseña',
-                    ),
-                    SizedBox(height: 2),
-                    CustomInputField(
-                      hintText: 'Ingresa tu contraseña',
-                      obscureText: true,
-                      suffixIcon: Icons.visibility,
-                    ),
-                    SizedBox(height: 30),
-                  ],
+                  child: Column(
+                    children: [
+                      const UserInput2Field(
+                        icon: Icons.person_2_outlined,
+                        text: 'Usuario',
+                      ),
+                      const SizedBox(height: 2),
+                      CustomInputField(
+                        hintText: 'Escribe tu correo electronico',
+                        keyboardType: TextInputType.emailAddress,
+                        validator: (value) {
+                          //que no este vacio
+                          if (value == null || value.isEmpty) {
+                            return 'Por favor, ingresa tu correo electrónico';
+                          }
+                          //que sea un correo
+                          if (!value.contains('@')) {
+                            return 'Ingresa un correo electrónico válido';
+                          }
+                          // Verificar si el correo electrónico contiene un punto después del símbolo '@'
+                          final regex = RegExp(r'@[^@\s]+\.[^@\s]+');
+                          if (!regex.hasMatch(value)) {
+                            return 'Ingresa un correo electrónico válido';
+                          }
+                          // Agrega más validaciones según tus requisitos
+                          return null;
+                        },
+                      ),
+                      const SizedBox(height: 6),
+                      const UserInput2Field(
+                        icon: Icons.lock_clock_outlined,
+                        text: 'Contraseña',
+                      ),
+                      const SizedBox(height: 2),
+                      CustomInputField(
+                        hintText: 'Ingresa tu contraseña',
+                        obscureText: true,
+                        suffixIcon: Icons.visibility,
+                        validator: (value) {
+                          //que no este vacio
+                          if (value == null || value.isEmpty) {
+                            return 'Por favor, ingresa tu contraseña';
+                          }
+                        },
+                      ),
+                      const SizedBox(height: 30),
+                    ],
+                  ),
                 ),
               ),
             ),

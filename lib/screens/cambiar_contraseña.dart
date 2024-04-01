@@ -200,6 +200,7 @@ class CambiarContraScreen extends StatelessWidget {
                         hintText: 'Escribe tu nueva contraseña',
                         obscureText: true,
                         suffixIcon: Icons.visibility,
+                        //que no sea igual a la anterior
                       ),
                       SizedBox(
                         height: 20.0,
