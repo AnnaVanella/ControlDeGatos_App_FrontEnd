@@ -117,9 +117,7 @@ class RecuperarContraScreen extends StatelessWidget {
                       const SizedBox(height: 30),
                       // CustomButton(
                       //    text: 'Ingresar',
-                      //      onPressed: () {
-                      //       Navigator.pushNamed(context, 'login2');
-                      //     }),
+                      //      onPressed: () => Navigator.pushNamed(context, 'login2')),
                     ],
                   ),
                 ),
@@ -130,7 +128,11 @@ class RecuperarContraScreen extends StatelessWidget {
           CustomElevatedButton(
             buttonText: 'Ingresar',
             onPressed: () {
-              Navigator.pushNamed(context, 'login2');
+              if (myFormKey.currentState != null &&
+                  myFormKey.currentState!.validate()) {
+                // Si el formulario es válido, navegar a la siguiente pantalla
+                Navigator.pushNamed(context, 'login2');
+              }
             },
             top: 820,
             right: 84,

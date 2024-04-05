@@ -12,7 +12,7 @@ class CustomModalBottomSheet extends StatelessWidget {
 
     return Container(
       width: 530,
-      height: 600,
+      height: 900,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(50), // Agrega el borde redondeado
         color: const Color(0xFFC8C8C8), // Cambia el color de fondo

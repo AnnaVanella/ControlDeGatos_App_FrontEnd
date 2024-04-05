@@ -113,82 +113,120 @@ class DatosPersonalesScreen extends StatelessWidget {
                 left: 0,
                 right: 0,
                 child: CustomContainer(
-                  child: Column(
+                  child: Form(
                     key: myFormKey,
-                    children: const [
-                      SizedBox(
-                        height: 100,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(width: 8),
-                          Icon(
-                            Icons.lock_person_outlined,
-                            color: Color(0xFFFFC727),
-                            size: 20,
-                          ),
-                          SizedBox(width: 10),
-                          Text(
-                            'Datos personales',
-                            style: TextStyle(
+                    child: Column(
+                      children: [
+                        const SizedBox(
+                          height: 100,
+                        ),
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(width: 8),
+                            Icon(
+                              Icons.lock_person_outlined,
                               color: Color(0xFFFFC727),
-                              fontFamily: 'Montserrat',
-                              fontSize: 18,
-                              fontStyle: FontStyle.normal,
-                              fontWeight: FontWeight.w500,
+                              size: 20,
                             ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                      TextoDes2Screen(
-                        texto: 'Aquí puedes cambiar tus datos personales',
-                        leftPadding: 0.43,
-                        rightPadding: 0.44,
-                        topPadding: 0.32,
-                      ),
-                      SizedBox(
-                        height: 24.0,
-                      ),
-                      UserInput2Field(
-                        icon: Icons.person_pin,
-                        text: 'Nombre Completo',
-                      ),
-                      SizedBox(height: 10),
-                      CustomInputField(
-                        hintText: 'Escribe tu nombre y apellidos',
-                      ),
-                      SizedBox(height: 6),
-                      UserInput2Field(
-                        icon: Icons.calendar_month,
-                        text: 'Fecha de nacimiento',
-                      ),
-                      SizedBox(height: 2),
-                      CustomInputField(
-                        hintText: 'Ingresa tu fecha de nacimiento',
-                      ),
-                      SizedBox(height: 6),
-                      UserInput2Field(
-                        icon: Icons.pin_drop_outlined,
-                        text: 'Dirección',
-                      ),
-                      SizedBox(height: 2),
-                      CustomInputField(
-                        hintText: 'Ingresa tu dirección',
-                      ),
-                      SizedBox(height: 6),
-                      UserInput2Field(
-                        icon: Icons.call,
-                        text: 'Numero de contacto',
-                      ),
-                      SizedBox(height: 2),
-                      CustomInputField(
-                        hintText: 'Ingresa tu numero de contacto',
-                      ),
-                    ],
+                            SizedBox(width: 10),
+                            Text(
+                              'Datos personales',
+                              style: TextStyle(
+                                color: Color(0xFFFFC727),
+                                fontFamily: 'Montserrat',
+                                fontSize: 18,
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10.0,
+                        ),
+                        const TextoDes2Screen(
+                          texto: 'Aquí puedes cambiar tus datos personales',
+                          leftPadding: 0.43,
+                          rightPadding: 0.44,
+                          topPadding: 0.32,
+                        ),
+                        const SizedBox(
+                          height: 24.0,
+                        ),
+                        const UserInput2Field(
+                          icon: Icons.person_pin,
+                          text: 'Nombre Completo',
+                        ),
+                        SizedBox(height: 10),
+                        CustomInputField(
+                          hintText: 'Escribe tu nombre y apellidos',
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Por favor, ingresa tu nombre y apellidos';
+                            }
+                            // Expresión regular que valida que solo contiene letras y espacios
+                            if (!RegExp(r'^[a-zA-Z\s]+$').hasMatch(value)) {
+                              return 'Ingresa solo letras';
+                            }
+                            return null;
+                          },
+                        ),
+                        SizedBox(height: 6),
+                        UserInput2Field(
+                          icon: Icons.calendar_month,
+                          text: 'Fecha de nacimiento',
+                        ),
+                        SizedBox(height: 2),
+                        CustomInputField(
+                          hintText: 'Ingresa tu fecha de nacimiento',
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Por favor, ingresa tu fecha de nacimiento';
+                            }
+                            if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
+                              return 'Ingresa solo números';
+                            }
+                            return null;
+                          },
+                        ),
+                        const SizedBox(height: 6),
+                        const UserInput2Field(
+                          icon: Icons.pin_drop_outlined,
+                          text: 'Dirección',
+                        ),
+                        const SizedBox(height: 2),
+                        CustomInputField(
+                          hintText: 'Ingresa tu dirección',
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Por favor, ingresa tu dirección';
+                            }
+                            return null;
+                          },
+                        ),
+                        const SizedBox(height: 6),
+                        const UserInput2Field(
+                          icon: Icons.call,
+                          text: 'Numero de contacto',
+                        ),
+                        const SizedBox(height: 2),
+                        CustomInputField(
+                          hintText: 'Ingresa tu numero de contacto',
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Por favor, ingresa tu número de contacto';
+                            }
+                            // Expresión regular que valida que solo contiene números
+                            if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
+                              return 'Ingresa solo números';
+                            }
+                            // Agrega más validaciones según tus requisitos
+                            return null;
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -219,7 +257,11 @@ class DatosPersonalesScreen extends StatelessWidget {
               CustomElevatedButton(
                 buttonText: 'Guardar',
                 onPressed: () {
-                  Navigator.pushNamed(context, 'login2');
+                  if (myFormKey.currentState != null &&
+                      myFormKey.currentState!.validate()) {
+                    // Si el formulario es válido, navegar a la siguiente pantalla
+                    Navigator.pushNamed(context, 'home');
+                  }
                 },
                 top: MediaQuery.of(context).size.height * 0.9,
                 right: 84,

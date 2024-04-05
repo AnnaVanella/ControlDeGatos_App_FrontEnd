@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_hegga_controldegastos_frontend/widgets/menu.dart';
@@ -14,31 +15,24 @@ class HomeScreen extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            DrawerHeader(
-              child: GestureDetector(
-                onTap: () {
-                  // Navegar al inicio (home)
-                  Navigator.pop(context); // Cerrar el drawer
-                  Navigator.pushNamed(context, 'home'); // Navegar al inicio
-                },
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.menu,
+            const DrawerHeader(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.menu,
+                    color: Color(0xFF000000),
+                    size: 40,
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    'Menú',
+                    style: TextStyle(
                       color: Color(0xFF000000),
-                      size: 40,
+                      fontSize: 24,
                     ),
-                    SizedBox(height: 8),
-                    Text(
-                      'Menú',
-                      style: TextStyle(
-                        color: Color(0xFF000000),
-                        fontSize: 24,
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
 
@@ -124,6 +118,7 @@ class HomeScreen extends StatelessWidget {
                 child: CustomContainer(
                   color: Color(0xFFE6B323),
                   child: Column(
+                    // mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       IconoTexto(
                         icon: Icons.mode_of_travel,
@@ -161,13 +156,23 @@ class HomeScreen extends StatelessWidget {
                           'Wanderlunst bar e cozinha',
                           'Zara,' 'Yakissbo Mundial'
                         ],
+                        column3Data: [
+                          '02-12-2024',
+                          '04-12-2024',
+                          '05-12-2024',
+                          '05-12-2024',
+                          '09-12-2024',
+                          '11-12-2024',
+                          '11-12-2024',
+                          '15-12-2024'
+                        ],
                       ),
                     ],
                   ),
                 ),
               ),
 
-//container de los gastos del home
+              //container de los gastos del home
               const Positioned(
                 top: 720,
                 left: 0,
@@ -193,34 +198,37 @@ class HomeScreen extends StatelessWidget {
                         rightPadding: 0.1,
                         topPadding: 0.32,
                       ),
-                      ColumnTableGastos(
-                        column1Data: [
-                          '16:24 pm',
-                          '16:13 pm',
-                          '16:04 pm',
-                          '15:28 pm',
-                          '15:47 pm',
-                          '14:12 pm',
-                          '1:34 pm'
-                        ],
-                        column2Data: [
-                          'Heladeria Crosft',
-                          'Zara',
-                          'Zara',
-                          'Zara',
-                          'Yakissbo Mundial',
-                          'Wanderlunst bar e cozinha',
-                          'Zara,' 'Yakissbo Mundial'
-                        ],
-                        column3Data: [
-                          '-\$12.000',
-                          '-\$61.000',
-                          '-\$83.000',
-                          '-\$29.300',
-                          '-\$10.000',
-                          '-\$22.000',
-                          '-\$29.300',
-                        ],
+                      SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        child: ColumnTableGastos(
+                          column1Data: [
+                            '16:24 pm',
+                            '16:13 pm',
+                            '16:04 pm',
+                            '15:28 pm',
+                            '15:47 pm',
+                            '14:12 pm',
+                            '1:34 pm'
+                          ],
+                          column2Data: [
+                            'Heladeria Crosft',
+                            'Zara',
+                            'Zara',
+                            'Zara',
+                            'Yakissbo Mundial',
+                            'Wanderlunst bar e cozinha',
+                            'Zara,' 'Yakissbo Mundial'
+                          ],
+                          column3Data: [
+                            '-\$12.000',
+                            '-\$61.000',
+                            '-\$83.000',
+                            '-\$29.300',
+                            '-\$10.000',
+                            '-\$22.000',
+                            '-\$29.300',
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -358,8 +366,10 @@ class HomeScreen extends StatelessWidget {
 
               const CustomMenuButton(),
 
+              //BOTONES
+
               Positioned(
-                top: 540,
+                top: 532,
                 right: 16,
                 child: CustomTextButton(
                   icon: Icons.add,
@@ -370,6 +380,7 @@ class HomeScreen extends StatelessWidget {
                   textColor: const Color(0xFF149A61),
                   onPressed: () {
                     showModalBottomSheet(
+                      backgroundColor: Color(0xFFC8C8C8),
                       context: context,
                       builder: (BuildContext context) {
                         return CustomModalBottomSheet(
@@ -430,7 +441,7 @@ class HomeScreen extends StatelessWidget {
               ),
 
               Positioned(
-                bottom: 110,
+                bottom: 118,
                 right: 16,
                 child: CustomTextButton(
                   icon: Icons.add,
@@ -441,6 +452,7 @@ class HomeScreen extends StatelessWidget {
                   textColor: const Color(0xFF149A61),
                   onPressed: () {
                     showModalBottomSheet(
+                      backgroundColor: Color(0xFFC8C8C8),
                       context: context,
                       builder: (BuildContext context) {
                         return Align(
@@ -493,7 +505,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
 
-              Positioned(
+              const Positioned(
                 top: 150,
                 left: 0,
                 right: 0,

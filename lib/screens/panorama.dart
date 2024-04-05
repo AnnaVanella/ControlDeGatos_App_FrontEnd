@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import '../widgets/widgets.dart';
 
@@ -55,7 +57,7 @@ class PanoramaScreen extends StatelessWidget {
             ),
             // Aquí agregamos la línea
             CustomPaint(
-              size: Size(double.infinity, 2),
+              size: const Size(double.infinity, 2),
               painter: LinePainter(),
             ),
 
@@ -142,45 +144,38 @@ class PanoramaScreen extends StatelessWidget {
                               SizedBox(
                                 height: 10.0,
                               ),
-                              ColumnTablePanorama(
-                                column1Data: [
-                                  '16:24 pm',
-                                  '16:13 pm',
-                                  '16:04 pm',
-                                  '15:28 pm',
-                                  '15:47 pm',
-                                  '14:12 pm',
-                                  '1:34 pm'
-                                ],
-                                column2Data: [
-                                  'Heladeria Crosft',
-                                  'Zara',
-                                  'Zara',
-                                  'Zara',
-                                  'Yakissbo Mundial',
-                                  'Wanderlunst bar e cozinha',
-                                  'Zara,' 'Yakissbo Mundial'
-                                ],
-                              ),
-                              ColumnTablePanorama(
-                                column1Data: [
-                                  '16:24 pm',
-                                  '16:13 pm',
-                                  '16:04 pm',
-                                  '15:28 pm',
-                                  '15:47 pm',
-                                  '14:12 pm',
-                                  '1:34 pm'
-                                ],
-                                column2Data: [
-                                  'Heladeria Crosft',
-                                  'Zara',
-                                  'Zara',
-                                  'Zara',
-                                  'Yakissbo Mundial',
-                                  'Wanderlunst bar e cozinha',
-                                  'Zara,' 'Yakissbo Mundial'
-                                ],
+                              SingleChildScrollView(
+                                child: ColumnTablePanorama(
+                                  column1Data: [
+                                    '16:24 pm',
+                                    '16:13 pm',
+                                    '16:04 pm',
+                                    '15:28 pm',
+                                    '15:47 pm',
+                                    '14:12 pm',
+                                    '1:34 pm'
+                                  ],
+                                  column2Data: [
+                                    'Heladeria Crosft',
+                                    'Zara',
+                                    'Zara',
+                                    'Zara',
+                                    'Yakissbo Mundial',
+                                    'Wanderlunst bar e cozinha',
+                                    'Zara',
+                                    'Yakissbo Mundial'
+                                  ],
+                                  column3Data: [
+                                    '02-12-2024',
+                                    '04-12-2024',
+                                    '05-12-2024',
+                                    '05-12-2024',
+                                    '09-12-2024',
+                                    '11-12-2024',
+                                    '11-12-2024',
+                                    '15-12-2024'
+                                  ],
+                                ),
                               ),
                             ],
                           ),

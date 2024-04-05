@@ -240,3 +240,47 @@ class MyWidget3 extends StatelessWidget {
     );
   }
 }
+
+class BotonesRedes extends StatelessWidget {
+  final Color? iconColor;
+  final Color? backgroundColor;
+
+  const BotonesRedes({Key? key, this.iconColor, this.backgroundColor})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        IconButtonWithLabel(
+          iconData: Icons.abc,
+          label: '',
+          onPressed: () {
+            ;
+          },
+          iconColor: iconColor,
+          backgroundColor: backgroundColor,
+        ),
+        IconButtonWithLabel(
+          iconData: Icons.luggage_sharp,
+          label: '',
+          onPressed: () {
+            ;
+          },
+          iconColor: iconColor,
+          backgroundColor: backgroundColor,
+        ),
+        IconButtonWithLabel(
+          iconData: Icons.flight,
+          label: '',
+          onPressed: () {
+            ;
+          },
+          iconColor: Colors.white,
+          backgroundColor: Color(0xFF149A61),
+        ),
+      ],
+    );
+  }
+}

@@ -33,6 +33,21 @@ class FechasViajesScreen extends StatelessWidget {
             ),
 
             //AQUI VA LA IMAGEN DEL USUARIO
+// Container(
+//       decoration: BoxDecoration(
+//         shape: BoxShape.circle,
+//         border: Border.all(
+//           color: Colors.black,
+//           width: 567,
+//         ),
+//       ),
+//       child: CircleAvatar(
+//         // radius: radius -
+//         //     borderWidth, // Resta el ancho del borde del radio del avatar
+//        assetImagePath: 'assets/avatar.jpg',
+//       ),
+//     );
+
             Positioned(
               top: 10, // Ajusta la posición según sea necesario
               right: MediaQuery.of(context).size.width *
@@ -107,34 +122,256 @@ class FechasViajesScreen extends StatelessWidget {
                 ),
               ),
 
-              const Positioned(
+              Positioned(
                 top: 350,
-                // bottom: 0,
                 left: 0,
                 right: 0,
-                child: CustomContainer(
-                  color: Colors.white,
-                  child: Column(
-                    children: [
-                      IconoTexto(
-                        icon: Icons.flight,
-                        text: 'Fechas del viaje',
-                        iconColor: Color(0xFF149A61),
-                        iconSize: 36,
-                        textColor: Color(0xFF149A61),
-                        textSize: 28,
+                child: Column(
+                  children: [
+                    CustomContainer(
+                      color: Colors.white,
+                      child: Column(
+                        children: [
+                          const IconoTexto(
+                            icon: Icons.flight,
+                            text: 'Fechas del viaje',
+                            iconColor: Color(0xFF149A61),
+                            iconSize: 36,
+                            textColor: Color(0xFF149A61),
+                            textSize: 28,
+                          ),
+                          const SizedBox(
+                            height: 1.0,
+                          ),
+                          const SubtextoScreen(
+                            texto: 'Aquí puedes ver tus viajes programados:',
+                            leftPadding: 0.01,
+                            rightPadding: 0.01,
+                            topPadding: 0.32,
+                          ),
+                          const Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  "Proximo viaje",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 24,
+                                  ),
+                                  textAlign: TextAlign.left,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 10),
+
+                          //TABLAS DE VIAJES
+
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Container(
+                                  padding: EdgeInsets.all(10.0),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20.0),
+                                      // border: Border.all(color: Colors.black),
+                                      color: Color(0xFFFFF7DF)),
+                                  child: Column(
+                                    children: [
+                                      Table(
+                                        children: const [
+                                          TableRow(
+                                            children: [
+                                              TableCell(
+                                                  child: IconoTexto(
+                                                text: "Proximo Destino:",
+                                                icon: Icons.flight,
+                                                iconColor: Color(0xFF149A61),
+                                              )),
+                                              TableCell(
+                                                  child: IconoTexto(
+                                                text: "Argentina",
+                                                textSize: 18,
+                                              )),
+                                            ],
+                                          ),
+                                          TableRow(
+                                            children: [
+                                              TableCell(
+                                                child: IconoTexto(
+                                                  text: "Fecha del viaje:",
+                                                  icon: Icons.calendar_month,
+                                                  iconColor: Color(0xFF149A61),
+                                                ),
+                                              ),
+                                              TableCell(
+                                                  child: IconoTexto(
+                                                text: "24/03/2024",
+                                                textSize: 18,
+                                              )),
+                                            ],
+                                          ),
+                                          TableRow(
+                                            children: [
+                                              TableCell(
+                                                child: IconoTexto(
+                                                  text: "Fecha de regreso:",
+                                                  icon: Icons.calendar_today,
+                                                  iconColor: Color(0xFF149A61),
+                                                ),
+                                              ),
+                                              TableCell(
+                                                  child: IconoTexto(
+                                                text: "10/04/2024",
+                                                textSize: 18,
+                                              )),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        height: 10.0,
+                                      ),
+                                      ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                          fixedSize: const Size(322, 48),
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(26),
+                                            side: const BorderSide(
+                                                color: Color(0xFF107B4D),
+                                                width: 1),
+                                          ),
+                                          backgroundColor: Color(0xFF1ACD81),
+                                          shadowColor:
+                                              Colors.black.withOpacity(0.25),
+                                          elevation: 4,
+                                        ),
+                                        onPressed: () {
+                                          Navigator.pushNamed(context, 'home');
+                                        },
+                                        child: const Text(
+                                          'Comenzar vacaciones',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 18,
+                                              fontFamily: 'Montserrat',
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          SizedBox(height: 10),
+
+                          //TABLA DE VIAJES2
+
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Container(
+                                  padding: EdgeInsets.all(10.0),
+                                  decoration: BoxDecoration(
+                                      // border: Border.all(color: Colors.black),
+                                      color: Color(0xFFFFF7DF)),
+                                  child: Column(
+                                    children: [
+                                      Table(
+                                        children: const [
+                                          TableRow(
+                                            children: [
+                                              TableCell(
+                                                  child: IconoTexto(
+                                                text: "Proximo Destino:",
+                                                icon: Icons.flight,
+                                                iconColor: Color(0xFF149A61),
+                                              )),
+                                              TableCell(
+                                                  child: IconoTexto(
+                                                text: "Mexico",
+                                                textSize: 18,
+                                              )),
+                                            ],
+                                          ),
+                                          TableRow(
+                                            children: [
+                                              TableCell(
+                                                child: IconoTexto(
+                                                  text: "Fecha del viaje:",
+                                                  icon: Icons.calendar_month,
+                                                  iconColor: Color(0xFF149A61),
+                                                ),
+                                              ),
+                                              TableCell(
+                                                  child: IconoTexto(
+                                                text: "05/05/2024",
+                                                textSize: 18,
+                                              )),
+                                            ],
+                                          ),
+                                          TableRow(
+                                            children: [
+                                              TableCell(
+                                                child: IconoTexto(
+                                                  text: "Fecha de regreso:",
+                                                  icon: Icons.calendar_today,
+                                                  iconColor: Color(0xFF149A61),
+                                                ),
+                                              ),
+                                              TableCell(
+                                                  child: IconoTexto(
+                                                text: "22/05/2024",
+                                                textSize: 18,
+                                              )),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        height: 10.0,
+                                      ),
+                                      ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                          fixedSize: const Size(322, 48),
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(26),
+                                            side: const BorderSide(
+                                                color: Color(0xFF107B4D),
+                                                width: 1),
+                                          ),
+                                          backgroundColor: Color(0xFF1ACD81),
+                                          shadowColor:
+                                              Colors.black.withOpacity(0.25),
+                                          elevation: 4,
+                                        ),
+                                        onPressed: () {
+                                          Navigator.pushNamed(context, 'home');
+                                        },
+                                        child: const Text(
+                                          'Comenzar vacaciones',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 18,
+                                              fontFamily: 'Montserrat',
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                      SizedBox(
-                        height: 1.0,
-                      ),
-                      SubtextoScreen(
-                        texto: 'Aquí puedes ver tus viajes programados:',
-                        leftPadding: 0.01,
-                        rightPadding: 0.01,
-                        topPadding: 0.32,
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
 
@@ -195,6 +432,7 @@ class FechasViajesScreen extends StatelessWidget {
                   ),
                   onPressed: () {
                     showModalBottomSheet(
+                      backgroundColor: const Color(0xFFC8C8C8),
                       context: context,
                       builder: (BuildContext context) {
                         return CustomModalBottomSheet(

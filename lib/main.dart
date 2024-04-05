@@ -13,7 +13,7 @@ class ControlDeGastos extends StatelessWidget {
       title: 'Control de Gastos',
       theme: ThemeData(primarySwatch: Colors.orange, useMaterial3: true),
       debugShowCheckedModeBanner: false,
-      initialRoute: "onboarding",
+      initialRoute: "login2",
       routes: {
         'home': (_) => const HomeScreen(),
         // 'login': (_) => LoginScreen(),
@@ -25,7 +25,7 @@ class ControlDeGastos extends StatelessWidget {
         'panorama': (_) => PanoramaScreen(),
         'GatosControlados': (_) => GatosControladosScreen(),
         'fechasViajes': (_) => FechasViajesScreen(),
-        'login2': (_) => Login2Screen(),
+        'login2': (_) => LoginWidget(),
         'onboarding2': (_) => Onboarding2Screen(),
         'onboarding': (_) => OnboardingScreen()
       },

@@ -55,11 +55,13 @@ class ColumnTableGastos extends StatelessWidget {
 class ColumnTablePanorama extends StatelessWidget {
   final List<String> column1Data;
   final List<String> column2Data;
+  final List<String> column3Data;
 
   const ColumnTablePanorama({
     Key? key,
     required this.column1Data,
     required this.column2Data,
+    required this.column3Data,
   }) : super(key: key);
 
   @override
@@ -91,6 +93,7 @@ class ColumnTablePanorama extends StatelessWidget {
                   children: [
                     _buildDataCell(column1Data[index], Color(0xFF149A61)),
                     _buildDataCell(column2Data[index], Color(0xFF000000)),
+                    _buildDataCell(column3Data[index], Color(0xFFFF6600))
                   ],
                 ),
               ),

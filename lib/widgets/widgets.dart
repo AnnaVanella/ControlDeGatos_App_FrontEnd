@@ -11,3 +11,6 @@ export 'package:flutter_hegga_controldegastos_frontend/widgets/menu.dart';
 export 'package:flutter_hegga_controldegastos_frontend/widgets/rectangulo.dart';
 export 'package:flutter_hegga_controldegastos_frontend/widgets/texto_login.dart';
 export 'package:flutter_hegga_controldegastos_frontend/widgets/textos2.dart';
+
+export 'package:flutter_hegga_controldegastos_frontend/widgets/mostrarErrorConSnackBar.dart';
+export 'package:flutter_hegga_controldegastos_frontend/widgets/mostrarErrorConAlertDialog.dart';

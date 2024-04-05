@@ -1,9 +1,25 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_hegga_controldegastos_frontend/model/user.dart';
+import 'package:flutter_hegga_controldegastos_frontend/model/userError.dart';
+import 'package:flutter_hegga_controldegastos_frontend/screens/home_screen.dart';
+import 'package:flutter_hegga_controldegastos_frontend/utils.dart';
 import '../widgets/widgets.dart';
 
-class Login2Screen extends StatelessWidget {
-  Login2Screen({Key? key});
+class LoginWidget extends StatefulWidget {
+  const LoginWidget({super.key});
+
+  @override
+  LoginWidgetState createState() => LoginWidgetState();
+}
+
+class LoginWidgetState extends State<LoginWidget> {
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
+  // final _rutController = TextEditingController(text: "19503995-k");
+  // text: "annarojas@gmail.com"
+  // text: "123456"
+  final userService = LoginApiService();
+  // Login2Screen({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +80,7 @@ class Login2Screen extends StatelessWidget {
                       ),
                       const SizedBox(height: 2),
                       CustomInputField(
+                        controller: _usernameController,
                         hintText: 'Escribe tu correo electronico',
                         keyboardType: TextInputType.emailAddress,
                         validator: (value) {
@@ -91,6 +108,7 @@ class Login2Screen extends StatelessWidget {
                       ),
                       const SizedBox(height: 2),
                       CustomInputField(
+                        controller: _passwordController,
                         hintText: 'Ingresa tu contraseña',
                         obscureText: true,
                         suffixIcon: Icons.visibility,
@@ -99,6 +117,7 @@ class Login2Screen extends StatelessWidget {
                           if (value == null || value.isEmpty) {
                             return 'Por favor, ingresa tu contraseña';
                           }
+                          return null;
                         },
                       ),
                       const SizedBox(height: 30),
@@ -140,9 +159,67 @@ class Login2Screen extends StatelessWidget {
 
           CustomElevatedButton(
             buttonText: 'Ingresar',
-            onPressed: () {
-              Navigator.pushNamed(context, 'home');
+            onPressed: () async {
+              //Captura valor de los campos de text o TextField
+              String username = _usernameController.text;
+              String password = _passwordController.text;
+              print(username);
+              print(password);
+              // String rut = _rutController.text;
+              // if (!isValidRut(rut)) {
+              //   mostrarErrorConSnackBar(context, "Rut invalido");
+              //   return;
+              // }
+              // Verificar si los campos están vacíos
+              if (username.isEmpty || password.isEmpty) {
+                mostrarErrorConSnackBar(
+                    context, "Por favor, completa todos los campos");
+                return;
+              }
+              //si los campos no estan llenados no se puede avanzar
+              // if (myFormKey.currentState == null) {
+              //   // Si el formulario es válido, navegar a la siguiente pantalla
+              //   mostrarErrorConAlertDialog(
+              //       context, "Por favor, completa los campos");
+              // }
+
+              if (!isEmailValid(username)) {
+                mostrarErrorConSnackBar(context, "Email invalido");
+                return;
+              }
+
+              // if (!isPasswordValid(password)) {
+              //   mostrarErrorConSnackBar(context,
+              //       "La contraseña debe tener al menos 8 caracteres, incluir una letra mayúscula, un número, un carácter especial y no puede contener '@' ni '.'");
+              //   return;
+              // }
+
+              Object response = await userService.login(username, password);
+              print(response);
+
+              if (response is User) {
+                // ignore: use_build_context_synchronously
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()),
+                );
+                return;
+              }
+
+              if (response is ErrorUser) {
+                // ignore: use_build_context_synchronously
+                //mostrarErrorConSnackBar(context, response.message);
+                // ignore: use_build_context_synchronously
+                mostrarErrorConAlertDialog(
+                    context, "Error de inicio de sesión");
+                return;
+              }
+              // ignore: use_build_context_synchronously
+              mostrarErrorConAlertDialog(context, "Error inesperado");
             },
+            // onPressed: () {
+            //   // Navigator.pushNamed(context, 'home');
+            // },
             top: 720,
             right: 84,
           ),
