@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hegga_controldegastos_frontend/widgets/widgets.dart';
+import 'package:flutter_hegga_controldegastos_frontend/service/crearUser.dart';
+import 'package:flutter_hegga_controldegastos_frontend/utils.dart';
 
-class CrearCuentaScreen extends StatelessWidget {
-  const CrearCuentaScreen({Key? key}) : super(key: key);
+class CrearUsuarioWidget extends StatefulWidget {
+  const CrearUsuarioWidget({super.key});
+
+  @override
+  CrearCuentaScreen createState() => CrearCuentaScreen();
+}
+
+class CrearCuentaScreen extends State<CrearUsuarioWidget> {
+  final _usernamecrearController = TextEditingController();
+  final _passworcreardController = TextEditingController();
+  final _confirmpassController = TextEditingController();
+  final userService = CrearUserApiService();
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +69,7 @@ class CrearCuentaScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 2),
                         CustomInputField(
+                          controller: _usernamecrearController,
                           hintText: 'Escribe tu correo electronico',
                           keyboardType: TextInputType.emailAddress,
                           validator: (value) {

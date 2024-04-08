@@ -93,7 +93,7 @@ class ColumnTablePanorama extends StatelessWidget {
                   children: [
                     _buildDataCell(column1Data[index], Color(0xFF149A61)),
                     _buildDataCell(column2Data[index], Color(0xFF000000)),
-                    _buildDataCell(column3Data[index], Color(0xFFFF6600))
+                    _buildDataCell(column3Data[index], Color(0xFFFFFFFF))
                   ],
                 ),
               ),
